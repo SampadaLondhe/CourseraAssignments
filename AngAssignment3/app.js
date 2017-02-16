@@ -36,11 +36,11 @@ function NarrowItDownController(MenuSearchService,$filter){
   menu.doSearch = function(){
         var promise = MenuSearchService.getMatchedMenuItems();
         promise.then(function(response){
-          menu.items = [];
+          menu.foundItems = [];
             if (menu.searchTerm.trim() != ''){
-                menu.items = $filter('filter')(response.data.menu_items, {description: menu.searchTerm.trim()});
-                  console.log(menu.items);
-                if (menu.items.length == 0){
+                menu.foundItems = $filter('filter')(response.data.menu_items, {description: menu.searchTerm.trim()});
+                  console.log(menu.foundItems);
+                if (menu.foundItems.length == 0){
                     menu.notFound = true;
                 }
                 else{
@@ -57,7 +57,7 @@ function NarrowItDownController(MenuSearchService,$filter){
     }
 
   menu.removeItem=function(itemIndex){
-      foundItems.splice(itemIndex,1);
+      menu.foundItems.splice(itemIndex,1);
   };
 }
 
