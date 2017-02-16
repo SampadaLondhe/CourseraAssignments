@@ -1,8 +1,9 @@
-<table ng-table = "menu.listTable">
-  <tr ng-repeat = "item in menu.items">
-    <td> {{ item.name }} </td>
-    <td> {{ item.short_name }} </td>
-    <td> {{ item.description }} </td>
-    <td><button ng-click = "menu.onRemove({index: $index});"> Don't want this one! </button></td>
-  </tr>
-</table>
+ <table ng-table = "menu.listTable">
+    <tr ng-repeat = "item in menu.items">
+      <td> {{ item.name }} </td>
+      <td> {{ item.short_name }} </td>
+      <td> {{ item.description }} </td>
+      <td><button ng-click = "menu.onRemove({index: $index});"> Don't want this one! </button></td>
+    </tr>
+  </table>
+  <div ng-if="menu.IsEmpty()"> Nothing found </div>
