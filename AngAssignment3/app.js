@@ -42,11 +42,12 @@ function NarrowItDownController(MenuSearchService,$filter){
                   console.log(menu.items);
                 if (menu.items.length == 0){
                     menu.notFound = true;
-                }else{
+                }
+                else{
                     menu.notFound = false;
                 }
-            }else{
-                menu.foundItems = [];
+            }
+            else{
                 menu.notFound = true
             }
         })
