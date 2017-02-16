@@ -32,15 +32,14 @@ NarrowItDownController.$inject=["MenuSearchService","$filter"];
 function NarrowItDownController(MenuSearchService,$filter){
   var menu=this;
   menu.searchTerm = '';
-  menu.items = [];
   menu.notFound = false;
 
   menu.doSearch = function(){
         var promise = MenuSearchService.getMatchedMenuItems();
         promise.then(function(response){
-
-            if (menu.searchTerm != ''){
-                menu.items = $filter('filter')(response.data.menu_items, {description: menu.searchTerm});
+          menu.items = [];
+            if (menu.searchTerm.trim() != ''){
+                menu.items = $filter('filter')(response.data.menu_items, {description: menu.searchTerm.trim()});
                   console.log(menu.items);
                 if (menu.items.length == 0){
                     menu.notFound = true;
