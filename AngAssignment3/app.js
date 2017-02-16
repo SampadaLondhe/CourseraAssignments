@@ -20,7 +20,6 @@ function FoundItemsDirective(){
   return ddo;
 }
 
-
 function FoundItemsDirectiveController(){
   var list=this;
   list.listIsEmpty = function(){
@@ -56,11 +55,9 @@ function NarrowItDownController(MenuSearchService,$filter){
         });
     }
 
-
-
-menu.removeItem=function(itemIndex){
-    foundItems.splice(itemIndex,1);
-};
+  menu.removeItem=function(itemIndex){
+      foundItems.splice(itemIndex,1);
+  };
 }
 
 MenuSearchService.$inject = ['$http'];
