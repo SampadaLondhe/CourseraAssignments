@@ -1,4 +1,4 @@
- <table ng-table = "menu.listTable">
+<table ng-table = "menu.listTable">
     <tr ng-repeat = "item in menu.items">
       <td> {{ item.name }} </td>
       <td> {{ item.short_name }} </td>
@@ -6,4 +6,4 @@
       <td><button ng-click = "menu.onRemove({index: $index});"> Don't want this one! </button></td>
     </tr>
   </table>
-  <div ng-if="menu.IsEmpty()"> Nothing found </div>
+  <H4 ng-if="menu.empty"> Nothing found </H4>

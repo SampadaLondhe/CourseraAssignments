@@ -11,7 +11,8 @@
       templateUrl: 'MenuList.html',
       scope : {
         items: '<',
-        onRemove: '&'
+        onRemove: '&',
+        empty: '<'
       },
       controller: FoundItemsDirectiveController,
       controllerAs: 'menu',
@@ -22,28 +23,21 @@
 
   function FoundItemsDirectiveController(){
     var list=this;
-    list.IsEmpty = function () {
-      if(list.items!==undefined){
-      if (list.items.length==0) {
-          return true;
-        }
-      else{
-          return false;
-        }
-      }
-    };
-  }
+}
+
 
   NarrowItDownController.$inject=['MenuSearchService'];
   function NarrowItDownController(MenuSearchService){
     var menu = this;
+    menu.empty=false;
 
     menu.doSearch = function(){
-        MenuSearchService.getMatchedMenuItems(menu.searchTerm);
-        menu.items = MenuSearchService.getItems();
-        console.log( menu.items);
-
-    };
+        var promise=MenuSearchService.getMatchedMenuItems(menu.searchTerm);
+        promise.then(function(response){
+        menu.items=response;
+        menu.empty=MenuSearchService.isEmpty();
+      })
+    }
       menu.removeItem = function(itemIndex){
       MenuSearchService.removeItem(itemIndex);
     };
@@ -54,37 +48,42 @@
     var service = this;
     var foundItems = [];
     service.getMatchedMenuItems = function (searchTerm) {
-      var response = $http({
+      foundItems=[];
+      return $http({
         method: "GET",
         url: "https://davids-restaurant.herokuapp.com/menu_items.json",
-      });
-    foundItems=[];
-    var promise = response;
-    console.log(response.data);
-    promise.then(function (response){
-    if(searchTerm !== undefined) {
-     if(searchTerm.trim() !== ""){
-       for(var i=0; i<response.data.menu_items.length; i++){
-         var desc=response.data.menu_items[i].description.toLowerCase();
-         var ser=searchTerm.toLowerCase();
-         if(desc.indexOf(ser)>=0){
-           foundItems.push(response.data.menu_items[i]);
+      })
+     .then(function (response){
+      if(searchTerm !== undefined) {
+       if(searchTerm.trim() !== ""){
+         for(var i=0; i<response.data.menu_items.length; i++){
+           var desc=response.data.menu_items[i].description.toLowerCase();
+           var ser=searchTerm.toLowerCase();
+           if(desc.indexOf(ser)>=0){
+             foundItems.push(response.data.menu_items[i]);
+           }
          }
-       }
+         console.log(foundItems);
+         return foundItems;
      }
   }
   })
   .catch(function(error){
     console.log(error);
   });
-  };
+  }
 
-  service.getItems=function(){
-      return foundItems;
-  };
+  service.isEmpty = function(){
+    if(foundItems.length == 0){
+       return true;
+    }
+    else {
+       return false;
+    }
+  }
 
   service.removeItem=function(itemIndex){
       foundItems.splice(itemIndex,1);
-  };
+  }
   }
   })()
