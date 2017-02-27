@@ -40,4 +40,5 @@ function RoutesConfig($stateProvider,$urlRouterProvider) {
           }
       });
 }
+
 })();
