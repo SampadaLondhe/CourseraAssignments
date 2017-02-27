@@ -27,8 +27,8 @@ function RoutesConfig($stateProvider,$urlRouterProvider) {
 
   .state('items', {
     url: '/itemslist/{categoryID}',
-    templateUrl: 'src/menulist/templates/itemlist.template.html',
-    controller: 'ItemListController as $ctrl',
+    templateUrl: 'src/menulist/templates/main-itemlist.template.html',
+    controller: 'ItemListController as itemslist',
     resolve: {
       list: ['$stateParams', 'MenuDataService',
             function($stateParams, MenuDataService) {
