@@ -32,14 +32,9 @@ function RoutesConfig($stateProvider,$urlRouterProvider) {
     resolve: {
       list: ['$stateParams', 'MenuDataService',
             function($stateParams, MenuDataService) {
-              var shortname = "";
               return MenuDataService.getAllCategories()
-              .then(function(items) {
-                shortname = items.data[$stateParams.categoryID].short_name;
-                return shortname;
-              })
-              .then (function(shortname) {
-                  return MenuDataService.getItemsForCategory(shortname);
+              .then (function(items) {
+                  return MenuDataService.getItemsForCategory($stateParams.categoryID);
               });
            }]
           }
