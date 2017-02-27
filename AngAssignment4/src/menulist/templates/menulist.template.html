@@ -1,0 +1,8 @@
+<!-- <a ui-sref="home"></a>&lt; <span>List</span>
+
+<h3>Welcome to our Restaurant</h3> -->
+<ul>
+  <li ng-repeat="category in $ctrl.categories" ui-sref="items({categoryID: $index})">
+  {{category.id}}  &nbsp; {{category.name}}  &nbsp;  {{category.short_name}}
+  </li>
+</ul>

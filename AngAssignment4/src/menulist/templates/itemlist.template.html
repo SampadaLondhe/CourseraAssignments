@@ -1,0 +1,25 @@
+<a ui-sref="home">Home</a> &lt;
+<a ui-sref="categories">Categories</a> &lt;
+<span>Items List</span>
+<table ng-table="$ctrl.listtable">
+<tr>
+  <th> ID </th>
+  <th> Name </th>
+  <th> Short name </th>
+  <th> Large portion name </th>
+  <th> Small portion name </th>
+  <th> Price large </th>
+  <th> Price small </th>
+  <th> Description </th>
+</tr>
+<tr ng-repeat = "item in $ctrl.items">
+  <td> {{item.id}} </td>
+  <td> {{item.name}} </td>
+  <td> {{item.short_name}} </td>
+  <td> {{item.large_portion_name}} </td>
+  <td> {{item.small_portion_name}} </td>
+  <td> {{item.price_large}} </td>
+  <td> {{item.price_small}} </td>
+  <td> {{item.description}} </td>
+</tr>
+</table>
