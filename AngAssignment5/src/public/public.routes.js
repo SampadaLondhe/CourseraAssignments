@@ -48,14 +48,14 @@ function routeConfig ($stateProvider) {
       controller: 'SignUpController',
       controllerAs: 'signUpCtrl'
     })
-    
+
     .state('public.myinfo', {
       url: '/myinfo',
       templateUrl: 'src/public/myinfo/myinfo.html',
       controller: 'MyInfoController',
       controllerAs: 'myInfoCtrl',
       resolve: {
-        userDetails: ['UserService', function (UserService) {
+        userDetails: ['UserService', function(UserService) {
           return UserService.getUser();
         }]
       }

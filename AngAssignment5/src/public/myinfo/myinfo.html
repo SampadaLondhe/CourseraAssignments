@@ -9,6 +9,7 @@
         <label> E-mail address : </label> {{ myInfoCtrl.email }}<br>
         <label> Phone number : </label> {{ myInfoCtrl.phone }}<br>
         <h4 style="color:green">Favorite dish</h4>
+
         <div ng-if="myInfoCtrl.favoriteMenuItem">
           <img ng-src="{{myInfoCtrl.basePath}}/images/{{ myInfoCtrl.favoriteMenuItem.short_name }}.jpg"><br>
           <label> Item Name : </label> {{ myInfoCtrl.favoriteMenuItem.name }}<br>
@@ -16,7 +17,7 @@
           <label> Description : </label>  <p>{{ myInfoCtrl.favoriteMenuItem.description}}</p>
         </div>
         <div ng-show="!myInfoCtrl.favoriteMenuItem">
-          <p>Not available. Invalid short name of favorite dish</p>
+          <p>Not available. Invalid short name of favorite dish.</p>
         </div>
       </div>
     </div>

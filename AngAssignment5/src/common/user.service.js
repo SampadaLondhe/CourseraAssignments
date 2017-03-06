@@ -1,8 +1,8 @@
 (function() {
-  "use strict";
+  'use strict';
 
-  angular.module("common")
-    .service("UserService", UserService);
+  angular.module('common')
+    .service('UserService', UserService);
 
   function UserService() {
     var service = this;

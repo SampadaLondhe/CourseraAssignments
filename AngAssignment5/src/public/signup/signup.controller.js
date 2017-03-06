@@ -9,6 +9,7 @@
     var $ctrl = this;
     $ctrl.signUpSuccess = false;
     $ctrl.favoriteDishFound = false;
+    
     $ctrl.submit = function(event) {
       event.preventDefault();
       var user = {
