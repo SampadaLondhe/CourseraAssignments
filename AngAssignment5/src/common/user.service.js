@@ -3,19 +3,22 @@
 
   angular.module('common')
     .service('UserService', UserService);
+    UserService.$inject = ['MenuService'];
 
-  function UserService() {
+  function UserService(MenuService) {
     var service = this;
     var user;
 
-    service.setUser = function(userInfo) {
+    //service.setUser = function(userInfo) {
+    service.setUser = function(ufname, ulname, uemail, uphone, favitemDetails) {
       user = {
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-        email: userInfo.email,
-        phone: userInfo.phone,
-        favoriteDish: userInfo.favoriteDish,
-        favoriteMenuItem: userInfo.favoriteMenuItem
+        firstName: ufname,
+        lastName: ulname,
+        email: uemail,
+        phone: uphone,
+        favoriteDish: favitemDetails.short_name,
+        favoriteMenuItem: favitemDetails.name,
+        description: favitemDetails.description
       };
     };
 

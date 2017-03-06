@@ -37,7 +37,8 @@ function MenuService($http, ApiPath) {
   //   return response.data;
   // }
   service.getMenuItem = function (shortName) {
-    return $http.get(ApiPath + '/menu_items/' + shortName.toUpperCase() + '.json').then(function (response) {
+    return $http.get(ApiPath + '/menu_items/' + shortName.toUpperCase() + '.json')
+    .then(function (response) {
       return response.data;
     });
   }

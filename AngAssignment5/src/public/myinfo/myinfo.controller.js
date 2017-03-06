@@ -18,6 +18,7 @@
       $ctrl.phone = userDetails.phone;
       $ctrl.favoriteDish = userDetails.favoriteDish;
       $ctrl.favoriteMenuItem = userDetails.favoriteMenuItem;
+      $ctrl.description = userDetails.description;
     }
   }
 })();
