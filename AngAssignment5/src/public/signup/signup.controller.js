@@ -13,7 +13,7 @@
       console.log(signUpCtrl.favoriteDish);
     return MenuService.getMenuItem(signUpCtrl.favoriteDish)
     .then(function (favitemDetails) {
-            UserService.setUser(signUpCtrl.firstname, signUpCtrl.lastname,
+            UserService.setUser(signUpCtrl.firstName, signUpCtrl.lastName,
                                 signUpCtrl.email, signUpCtrl.phone, favitemDetails);
             signUpCtrl.errMsg = false;
             signUpCtrl.signUpSuccess = true;

@@ -9,7 +9,7 @@
     var $ctrl = this;
     $ctrl.successSigned = false;
     $ctrl.basePath = ApiPath;
-
+    console.log(userDetails);
     if(userDetails) {
       $ctrl.successSigned = true;
       $ctrl.firstName = userDetails.firstName;
