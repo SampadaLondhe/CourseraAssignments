@@ -8,24 +8,18 @@
         <label> Last name : </label> {{ myInfoCtrl.lastName }}<br>
         <label> E-mail address : </label> {{ myInfoCtrl.email }}<br>
         <label> Phone number : </label> {{ myInfoCtrl.phone }}<br>
-        <h4 style="color:green">Favorite dish</h4>
 
-        <div ng-if="myInfoCtrl.favoriteMenuItem">
-          <img ng-src="{{myInfoCtrl.basePath}}/images/{{ myInfoCtrl.favoriteDish}}.jpg"><br>
-          <label> Item Name : </label> {{ myInfoCtrl.favoriteMenuItem }}<br>
-          <label> Short Name : </label> {{ myInfoCtrl.favoriteDish }}<br>
-          <label> Description : </label>  <p>{{ myInfoCtrl.description}}</p>
-        </div>
-        <div ng-show="!myInfoCtrl.favoriteMenuItem">
-          <p>Not available. Invalid short name of favorite dish.</p>
+        <h4 style="color:green">Favorite dish</h4>
+        <img ng-src="{{myInfoCtrl.basePath}}/images/{{ myInfoCtrl.favoriteDish}}.jpg"><br>
+        <label> Item Name : </label> {{ myInfoCtrl.favoriteMenuItem }}<br>
+        <label> Short Name : </label> {{ myInfoCtrl.favoriteDish }}<br>
+        <label> Description : </label>  <p>{{ myInfoCtrl.description}}</p>
         </div>
       </div>
     </div>
-  </div>
 
   <div ng-if="!myInfoCtrl.successSigned">
-    Not Signed Up Yet.
+        <p> Not Signed Up Yet.</p>
     <a ui-sref="public.signup" class="">Sign up Now!</a>
   </div>
-
 </div>
